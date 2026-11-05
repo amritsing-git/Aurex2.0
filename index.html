@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090B">
+  <meta name="description" content="AUREX — Future in Motion. Discover a new way to shop with 3D viewing and Virtual Mirror.">
+
+  <title>AUREX — Future in Motion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=2">
+
+  <script src="app.js" defer></script>
+  <script src="admin.js" defer></script>
+  <script type="module" src="virtual-mirror.js"></script>
+</head>
+
+<body>
+
+  <!-- ================================
+       ANNOUNCEMENT BAR
+  ================================= -->
+  <div class="announcement-bar">
+    <span>THE FUTURE OF SHOPPING IS HERE</span>
+    <span class="announcement-dot"></span>
+    <span>WELCOME TO AUREX</span>
+  </div>
+
+
+  <!-- ================================
+       MAIN HEADER
+  ================================= -->
+  <header class="main-header">
+
+    <div class="header-inner">
+
+      <button class="icon-btn mobile-menu-btn"
+              id="menuToggle"
+              aria-label="Open navigation">
+        ☰
+      </button>
+
+      <a href="#home" class="brand-logo" data-route="home">
+        <span class="brand-symbol">A</span>
+        <span class="brand-name">AUREX</span>
+      </a>
+
+      <nav class="desktop-nav" id="desktopNav">
+        <a href="#home" data-route="home" class="nav-link active">Home</a>
+        <a href="#shop" data-route="shop" class="nav-link">Shop</a>
+        <a href="#mirror" data-route="mirror" class="nav-link">Virtual Mirror</a>
+        <a href="#about" data-route="about" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+
+        <button class="icon-btn" id="headerSearchBtn" aria-label="Search">
+          ⌕
+        </button>
+
+        <button class="icon-btn" data-route="wishlist" aria-label="Wishlist">
+          ♡
+          <span class="header-count" id="wishlistCount">0</span>
+        </button>
+
+        <button class="icon-btn cart-header-btn" data-route="cart" aria-label="Cart">
+          🛒
+          <span class="header-count" id="cartCount">0</span>
+        </button>
+
+        <button class="icon-btn" data-route="profile" aria-label="Profile">
+          ◉
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" data-route="home">Home</a>
+      <a href="#shop" data-route="shop">Shop All</a>
+      <a href="#mirror" data-route="mirror">Virtual Mirror</a>
+      <a href="#wishlist" data-route="wishlist">Wishlist</a>
+      <a href="#orders" data-route="orders">My Orders</a>
+      <a href="#about" data-route="about">About AUREX</a>
+      <a href="#contact" data-route="contact">Contact</a>
+    </div>
+
+  </header>
+
+
+  <!-- ================================
+       SEARCH OVERLAY
+  ================================= -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-panel">
+
+      <button class="close-btn" id="closeSearch">✕</button>
+
+      <p class="eyebrow">FIND YOUR STYLE</p>
+      <h2>What are you looking for?</h2>
+
+      <div class="search-input-wrap">
+        <input
+          type="search"
+          id="globalSearch"
+          placeholder="Search products, categories..."
+          autocomplete="off"
+        >
+        <button id="performSearch">SEARCH</button>
+      </div>
+
+      <div id="searchSuggestions"></div>
+
+    </div>
+  </div>
+
+
+  <!-- ================================
+       MAIN APPLICATION
+  ================================= -->
+  <main id="appMain">
+
+
+    <!-- =================================
+         HOME PAGE
+    ================================== -->
+    <section class="page-view active" id="page-home" data-page="home">
+
+      <!-- HERO -->
+      <section class="hero-section">
+
+        <div class="hero-content">
+
+          <div class="hero-label">
+            <span class="live-dot"></span>
+            FUTURE IN MOTION
+          </div>
+
+          <h1>
+            STYLE THAT<br>
+            <span>MOVES WITH YOU.</span>
+          </h1>
+
+          <p>
+            Discover a new dimension of fashion.
+            Explore premium products and experience
+            the future of virtual shopping.
+          </p>
+
+          <div class="hero-actions">
+
+            <button class="primary-btn" data-route="shop">
+              EXPLORE COLLECTION <span>↗</span>
+            </button>
+
+            <button class="secondary-btn" data-route="mirror">
+              TRY VIRTUAL MIRROR
+            </button>
+
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <strong>01</strong>
+              <span>NEW EXPERIENCE</span>
+            </div>
+
+            <div>
+              <strong>360°</strong>
+              <span>PRODUCT VIEW</span>
+            </div>
+
+            <div>
+              <strong>∞</strong>
+              <span>POSSIBILITIES</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-frame">
+            <img
+              src="assets/images/1000162134.jpg"
+              alt="AUREX collection"
+              onerror="this.style.display='none'"
+            >
+            <div class="hero-image-overlay"></div>
+            <span class="hero-image-caption">AUREX / COLLECTION 2026</span>
+          </div>
+
+          <div class="hero-floating-card">
+            <span class="floating-icon">✦</span>
+            <div>
+              <strong>BEYOND ORDINARY</strong>
+              <small>Discover something different</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-background-text">AUREX</div>
+
+      </section>
+
+
+      <!-- CATEGORY STRIP -->
+      <section class="section-container category-section">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">EXPLORE YOUR WORLD</p>
+            <h2>Shop by <span>Category.</span></h2>
+          </div>
+
+          <button class="text-btn" data-route="shop">
+            VIEW ALL ↗
+          </button>
+        </div>
+
+        <div class="category-grid">
+
+          <button class="category-card" data-category="Shoes">
+            <div class="category-icon">◈</div>
+            <span>Footwear</span>
+            <small>EXPLORE ↗</small>
+          </button>
+
+          <button class="category-card" data-category="Clothing">
+            <div class="category-icon">◇</div>
+            <span>Clothing</span>
+            <small>EXPLORE ↗</small>
+          </button>
+
+          <button class="category-card" data-category="Watches">
+            <div class="category-icon">◷</div>
+            <span>Watches</span>
+            <small>EXPLORE ↗</small>
+          </button>
+
+          <button class="category-card" data-category="Accessories">
+            <div class="category-icon">✧</div>
+            <span>Accessories</span>
+            <small>EXPLORE ↗</small>
+          </button>
+
+          <button class="category-card" data-category="Electronics">
+            <div class="category-icon">⌁</div>
+            <span>Tech</span>
+            <small>EXPLORE ↗</small>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- TRENDING PRODUCTS -->
+      <section class="section-container products-section">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CURATED FOR YOU</p>
+            <h2>Trending <span>Now.</span></h2>
+          </div>
+
+          <button class="text-btn" data-route="shop">
+            DISCOVER ALL ↗
+          </button>
+        </div>
+
+        <div class="product-grid" id="homeProducts">
+
+          <!-- Products rendered by app.js -->
+
+          <div class="loading-placeholder">
+            <span class="loading-spinner"></span>
+            <p>Loading collection...</p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- VIRTUAL MIRROR PROMO -->
+      <section class="mirror-promo">
+
+        <div class="mirror-promo-content">
+
+          <p class="eyebrow">A NEW WAY TO EXPERIENCE FASHION</p>
+
+          <h2>
+            YOUR STYLE.<br>
+            YOUR AVATAR.<br>
+            <span>YOUR WORLD.</span>
+          </h2>
+
+          <p>
+            Meet the AUREX Virtual Mirror.
+            Explore an avatar-based shopping experience
+            and discover measurement-guided sizing.
+          </p>
+
+          <button class="primary-btn" data-route="mirror">
+            EXPERIENCE VIRTUAL MIRROR ↗
+          </button>
+
+        </div>
+
+        <div class="mirror-promo-art">
+          <div class="mirror-orbit orbit-one"></div>
+          <div class="mirror-orbit orbit-two"></div>
+          <div class="mirror-avatar-placeholder">
+            <span>A</span>
+            <small>VIRTUAL EXPERIENCE</small>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- DEALS -->
+      <section class="section-container deals-section">
+
+        <div class="deal-banner">
+
+          <div>
+            <p class="eyebrow">SELECTED COLLECTION</p>
+            <h2>UP TO <span>30% OFF</span></h2>
+            <p>Discover selected products at special prices.</p>
+
+            <button class="light-btn" data-route="shop">
+              SHOP THE DEALS ↗
+            </button>
+          </div>
+
+          <div class="deal-decoration">30%</div>
+
+        </div>
+
+      </section>
+
+
+      <!-- BENEFITS -->
+      <section class="section-container benefits-section">
+
+        <div class="benefit-item">
+          <span>↗</span>
+          <div>
+            <h3>Easy Shopping</h3>
+            <p>A clean and simple shopping experience.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <span>◇</span>
+          <div>
+            <h3>Modern Experience</h3>
+            <p>Explore 3D and virtual shopping concepts.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <span>♡</span>
+          <div>
+            <h3>Your Wishlist</h3>
+            <p>Save products you love for later.</p>
+          </div>
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =================================
+         SHOP PAGE
+    ================================== -->
+    <section class="page-view" id="page-shop" data-page="shop">
+
+      <div class="page-banner">
+        <p class="eyebrow">THE AUREX COLLECTION</p>
+        <h1>Discover <span>Everything.</span></h1>
+        <p>Explore products selected for your lifestyle.</p>
+      </div>
+
+      <div class="shop-layout">
+
+        <aside class="shop-sidebar">
+
+          <h3>Categories</h3>
+
+          <button class="filter-category active" data-category="All">All Products</button>
+          <button class="filter-category" data-category="Shoes">Footwear</button>
+          <button class="filter-category" data-category="Clothing">Clothing</button>
+          <button class="filter-category" data-category="Watches">Watches</button>
+          <button class="filter-category" data-category="Accessories">Accessories</button>
+          <button class="filter-category" data-category="Electronics">Electronics</button>
+
+          <div class="filter-block">
+            <h3>Price Range</h3>
+            <input type="range" id="priceFilter" min="0" max="10000" value="10000">
+            <p>Up to ₹<span id="priceFilterValue">10000</span></p>
+          </div>
+
+          <button class="outline-btn" id="clearFilters">CLEAR FILTERS</button>
+
+        </aside>
+
+        <div class="shop-main">
+
+          <div class="shop-toolbar">
+
+            <div>
+              <strong id="shopResultCount">All Products</strong>
+              <span id="shopResultText">Explore the collection</span>
+            </div>
+
+            <div class="shop-controls">
+
+              <input
+                type="search"
+                id="productSearch"
+                placeholder="Search products..."
+              >
+
+              <select id="productSort">
+                <option value="featured">Featured</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+                <option value="new">Newest</option>
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="product-grid" id="shopProducts">
+            <!-- Products rendered by app.js -->
+          </div>
+
+          <div class="empty-state hidden" id="shopEmpty">
+            <span>⌕</span>
+            <h3>No products found</h3>
+            <p>Try changing your search or filters.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         PRODUCT DETAILS PAGE
+    ================================== -->
+    <section class="page-view" id="page-product" data-page="product">
+
+      <div class="breadcrumb">
+        <button data-route="home">Home</button>
+        <span>/</span>
+        <button data-route="shop">Shop</button>
+        <span>/</span>
+        <span id="productBreadcrumb">Product</span>
+      </div>
+
+      <div class="product-detail-layout">
+
+        <div class="product-gallery">
+
+          <div class="main-product-image">
+            <img id="detailProductImage" src="" alt="Product image">
+            <span class="image-tag" id="detailProductTag">AUREX</span>
+          </div>
+
+          <div class="product-thumbnails" id="productThumbnails"></div>
+
+        </div>
+
+        <div class="product-detail-info">
+
+          <p class="eyebrow" id="detailProductCategory">COLLECTION</p>
+
+          <h1 id="detailProductName">Product Name</h1>
+
+          <div class="product-rating" id="detailProductRating">
+            ★★★★★ <span>Product rating</span>
+          </div>
+
+          <div class="detail-price">
+            <strong id="detailProductPrice">₹0</strong>
+            <del id="detailProductOldPrice"></del>
+            <span id="detailProductDiscount"></span>
+          </div>
+
+          <p id="detailProductDescription">
+            Product description will appear here.
+          </p>
+
+          <div class="product-option">
+            <label>SELECT SIZE</label>
+            <div class="size-options" id="detailSizeOptions"></div>
+          </div>
+
+          <div class="product-option">
+            <label>SELECT COLOR</label>
+            <div class="color-options" id="detailColorOptions"></div>
+          </div>
+
+          <div class="product-option">
+            <label>QUANTITY</label>
+            <div class="quantity-control">
+              <button id="detailQtyMinus">−</button>
+              <input type="number" id="detailQty" value="1" min="1">
+              <button id="detailQtyPlus">+</button>
+            </div>
+          </div>
+
+          <div class="detail-actions">
+            <button class="primary-btn" id="addToCartBtn">
+              ADD TO CART
+            </button>
+
+            <button class="outline-btn" id="addToWishlistBtn">
+              ♡
+            </button>
+          </div>
+
+          <button class="secondary-btn full-btn" data-route="mirror">
+            TRY WITH VIRTUAL MIRROR ↗
+          </button>
+
+          <div class="product-extra-info">
+            <p>✓ Product details and availability shown in demo</p>
+            <p>✓ Measurement-guided size concept</p>
+            <p>✓ Easy cart and wishlist management</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         CART PAGE
+    ================================== -->
+    <section class="page-view" id="page-cart" data-page="cart">
+
+      <div class="page-banner">
+        <p class="eyebrow">YOUR SELECTION</p>
+        <h1>Shopping <span>Cart.</span></h1>
+        <p>Review your selected products.</p>
+      </div>
+
+      <div class="cart-layout">
+
+        <div class="cart-items" id="cartItems">
+          <!-- Cart items rendered by app.js -->
+        </div>
+
+        <aside class="cart-summary">
+
+          <h2>Order Summary</h2>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong id="cartSubtotal">₹0</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Delivery</span>
+            <strong id="cartDelivery">₹0</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Discount</span>
+            <strong id="cartDiscount">₹0</strong>
+          </div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <strong id="cartTotal">₹0</strong>
+          </div>
+
+          <button class="primary-btn full-btn" id="goCheckoutBtn">
+            PROCEED TO CHECKOUT →
+          </button>
+
+          <button class="text-btn full-btn" data-route="shop">
+            CONTINUE SHOPPING
+          </button>
+
+        </aside>
+
+      </div>
+
+      <div class="empty-state hidden" id="cartEmpty">
+        <span>🛒</span>
+        <h2>Your cart is empty</h2>
+        <p>Discover something you love.</p>
+        <button class="primary-btn" data-route="shop">EXPLORE SHOP</button>
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         CHECKOUT PAGE
+    ================================== -->
+    <section class="page-view" id="page-checkout" data-page="checkout">
+
+      <div class="page-banner">
+        <p class="eyebrow">ALMOST THERE</p>
+        <h1>Complete Your <span>Order.</span></h1>
+      </div>
+
+      <div class="checkout-layout">
+
+        <form id="checkoutForm" class="checkout-form">
+
+          <div class="checkout-card">
+
+            <h2>01. Contact Information</h2>
+
+            <label for="checkoutName">Full Name</label>
+            <input id="checkoutName" name="name" required placeholder="Enter your name">
+
+            <label for="checkoutEmail">Email Address</label>
+            <input id="checkoutEmail" name="email" type="email" required placeholder="Enter email">
+
+            <label for="checkoutPhone">Phone Number</label>
+            <input id="checkoutPhone" name="phone" type="tel" required placeholder="Enter phone number">
+
+          </div>
+
+          <div class="checkout-card">
+
+            <h2>02. Delivery Address</h2>
+
+            <label for="checkoutAddress">Address</label>
+            <textarea id="checkoutAddress" name="address" required placeholder="House number, street, area"></textarea>
+
+            <label for="checkoutCity">City</label>
+            <input id="checkoutCity" name="city" required>
+
+            <label for="checkoutPincode">PIN Code</label>
+            <input id="checkoutPincode" name="pincode" required maxlength="6">
+
+          </div>
+
+          <div class="checkout-card">
+
+            <h2>03. Payment Method</h2>
+
+            <label class="payment-option">
+              <input type="radio" name="payment" value="COD" checked>
+              Cash on Delivery (Demo)
+            </label>
+
+            <label class="payment-option">
+              <input type="radio" name="payment" value="Online Demo">
+              Online Payment (Demo Only)
+            </label>
+
+            <p class="form-note">
+              This is a front-end demonstration. No real payment will be collected.
+            </p>
+
+          </div>
+
+          <button type="submit" class="primary-btn full-btn">
+            PLACE DEMO ORDER →
+          </button>
+
+        </form>
+
+        <aside class="checkout-summary">
+          <h2>Your Order</h2>
+          <div id="checkoutItems"></div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <strong id="checkoutTotal">₹0</strong>
+          </div>
+        </aside>
+
+      </div>
+
+      <div class="success-panel hidden" id="orderSuccess">
+        <span>✓</span>
+        <h2>Order Placed!</h2>
+        <p>Your demo order has been created successfully.</p>
+        <strong id="successOrderId"></strong>
+        <button class="primary-btn" data-route="orders">VIEW MY ORDERS</button>
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         WISHLIST PAGE
+    ================================== -->
+    <section class="page-view" id="page-wishlist" data-page="wishlist">
+
+      <div class="page-banner">
+        <p class="eyebrow">SAVED FOR LATER</p>
+        <h1>Your <span>Wishlist.</span></h1>
+        <p>All the products you love in one place.</p>
+      </div>
+
+      <div class="product-grid" id="wishlistProducts"></div>
+
+      <div class="empty-state hidden" id="wishlistEmpty">
+        <span>♡</span>
+        <h2>Your wishlist is empty</h2>
+        <p>Save products to find them here later.</p>
+        <button class="primary-btn" data-route="shop">EXPLORE PRODUCTS</button>
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         ORDERS PAGE
+    ================================== -->
+    <section class="page-view" id="page-orders" data-page="orders">
+
+      <div class="page-banner">
+        <p class="eyebrow">YOUR PURCHASE HISTORY</p>
+        <h1>My <span>Orders.</span></h1>
+        <p>View your demo purchases and order status.</p>
+      </div>
+
+      <div id="ordersContainer" class="orders-container"></div>
+
+      <div class="empty-state hidden" id="ordersEmpty">
+        <span>📦</span>
+        <h2>No orders yet</h2>
+        <p>Your orders will appear here.</p>
+        <button class="primary-btn" data-route="shop">START SHOPPING</button>
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         PROFILE PAGE
+    ================================== -->
+    <section class="page-view" id="page-profile" data-page="profile">
+
+      <div class="page-banner">
+        <p class="eyebrow">YOUR AUREX ACCOUNT</p>
+        <h1>My <span>Profile.</span></h1>
+      </div>
+
+      <div class="profile-layout">
+
+        <div class="profile-card">
+
+          <div class="profile-avatar" id="profileAvatar">A</div>
+
+          <h2 id="profileDisplayName">Welcome to AUREX</h2>
+          <p id="profileDisplayEmail">Your shopping profile</p>
+
+          <button class="outline-btn" id="editProfileBtn">EDIT PROFILE</button>
+
+        </div>
+
+        <div class="profile-details">
+
+          <h2>Personal Information</h2>
+
+          <form id="profileForm">
+
+            <label>Name</label>
+            <input id="profileName" name="name" placeholder="Your name">
+
+            <label>Email</label>
+            <input id="profileEmail" name="email" type="email" placeholder="Your email">
+
+            <label>Phone</label>
+            <input id="profilePhone" name="phone" type="tel" placeholder="Your phone">
+
+            <button class="primary-btn" type="submit">SAVE CHANGES</button>
+
+          </form>
+
+          <button class="text-btn" data-route="orders">VIEW MY ORDERS →</button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         VIRTUAL MIRROR PAGE
+    ================================== -->
+    <section class="page-view" id="page-mirror" data-page="mirror">
+
+      <div class="page-banner">
+        <p class="eyebrow">AUREX INNOVATION LAB</p>
+        <h1>Virtual <span>Mirror.</span></h1>
+        <p>Explore your avatar and measurement-guided shopping experience.</p>
+      </div>
+
+      <div class="mirror-workspace">
+
+        <div class="mirror-viewer-panel">
+
+          <div class="viewer-topbar">
+            <span>3D AVATAR VIEWER</span>
+            <span class="viewer-status" id="avatarStatus">INITIALIZING</span>
+          </div>
+
+          <div class="avatar-canvas-wrap" id="avatarCanvasWrap">
+
+            <canvas id="avatarCanvas"></canvas>
+
+            <div class="avatar-loading" id="avatarLoading">
+              <span class="loading-spinner"></span>
+              <p>Preparing your avatar...</p>
+            </div>
+
+            <div class="avatar-error hidden" id="avatarError">
+              <p>Avatar could not be loaded.</p>
+              <small>Check the model file and internet connection.</small>
+            </div>
+
+          </div>
+
+          <div class="viewer-controls">
+            <button id="rotateAvatarLeft">↶ ROTATE</button>
+            <button id="resetAvatar">RESET VIEW</button>
+            <button id="rotateAvatarRight">ROTATE ↷</button>
+          </div>
+
+        </div>
+
+
+        <div class="mirror-settings-panel">
+
+          <h2>Customize Your Avatar</h2>
+          <p>Enter your measurements to explore the sizing concept.</p>
+
+          <form id="measurementForm">
+
+            <label for="bodyHeight">Height (cm)</label>
+            <input type="number" id="bodyHeight" min="120" max="220" value="175">
+
+            <label for="bodyWeight">Weight (kg)</label>
+            <input type="number" id="bodyWeight" min="30" max="200" value="65">
+
+            <label for="bodyWaist">Waist (cm)</label>
+            <input type="number" id="bodyWaist" min="45" max="160" value="80">
+
+            <label for="bodyChest">Chest (cm)</label>
+            <input type="number" id="bodyChest" min="55" max="160" value="95">
+
+            <button type="submit" class="primary-btn full-btn">
+              UPDATE MEASUREMENTS
+            </button>
+
+          </form>
+
+          <div class="fit-result" id="fitResult">
+            <p class="eyebrow">SIZE GUIDANCE</p>
+            <h3 id="recommendedSize">--</h3>
+            <p id="fitExplanation">Enter your measurements to view a size suggestion.</p>
+            <small>Indicative demo result, not a guaranteed fit.</small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="mirror-disclaimer">
+        <strong>About this experience</strong>
+        <p>
+          The Virtual Mirror is an avatar-based demonstration.
+          Results depend on model capabilities and entered measurements.
+          It does not guarantee an exact real-world clothing fit.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         360 VIEWER PAGE
+    ================================== -->
+    <section class="page-view" id="page-viewer" data-page="viewer">
+
+      <div class="page-banner">
+        <p class="eyebrow">EXPLORE EVERY ANGLE</p>
+        <h1>360° <span>Experience.</span></h1>
+      </div>
+
+      <div class="viewer-page-content">
+
+        <div id="product3DViewer" class="product-3d-viewer">
+          <div class="viewer-placeholder">
+            <span>360°</span>
+            <p>Select a product to explore its viewing experience.</p>
+          </div>
+        </div>
+
+        <button class="primary-btn" data-route="shop">
+          EXPLORE PRODUCTS
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         ABOUT PAGE
+    ================================== -->
+    <section class="page-view" id="page-about" data-page="about">
+
+      <div class="page-banner">
+        <p class="eyebrow">OUR VISION</p>
+        <h1>Beyond <span>Ordinary.</span></h1>
+        <p>Future in Motion.</p>
+      </div>
+
+      <div class="about-content">
+
+        <div class="about-main">
+          <p class="eyebrow">INTRODUCING AUREX</p>
+
+          <h2>
+            Shopping should be more than just
+            <span>buying a product.</span>
+          </h2>
+
+          <p>
+            AUREX is a modern e-commerce concept designed to
+            combine product discovery with interactive digital experiences.
+            Our vision is to make online shopping more engaging,
+            visual and personal.
+          </p>
+
+          <p>
+            From product browsing and wishlists to 3D viewing
+            and an avatar-based Virtual Mirror concept,
+            AUREX explores a different direction for digital shopping.
+          </p>
+
+          <button class="primary-btn" data-route="shop">
+            EXPLORE AUREX ↗
+          </button>
+        </div>
+
+        <div class="about-mark">
+          <span>A</span>
+          <small>FUTURE IN MOTION</small>
+        </div>
+
+      </div>
+
+      <div class="about-values">
+
+        <div>
+          <strong>01</strong>
+          <h3>Innovation</h3>
+          <p>Exploring new digital shopping experiences.</p>
+        </div>
+
+        <div>
+          <strong>02</strong>
+          <h3>Simplicity</h3>
+          <p>Keeping the shopping journey clear and easy.</p>
+        </div>
+
+        <div>
+          <strong>03</strong>
+          <h3>Experience</h3>
+          <p>Making product discovery more interactive.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         CONTACT PAGE
+    ================================== -->
+    <section class="page-view" id="page-contact" data-page="contact">
+
+      <div class="page-banner">
+        <p class="eyebrow">WE ARE HERE TO HELP</p>
+        <h1>Get in <span>Touch.</span></h1>
+      </div>
+
+      <div class="contact-layout">
+
+        <div class="contact-info">
+          <h2>Let's connect.</h2>
+          <p>
+            Have a question about AUREX?
+            Send us a message using the form.
+          </p>
+
+          <div class="contact-detail">
+            <span>✉</span>
+            <div>
+              <strong>EMAIL</strong>
+              <p>support@aurex.example</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <span>◇</span>
+            <div>
+              <strong>BRAND</strong>
+              <p>AUREX — Future in Motion</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="contactForm" class="contact-form">
+
+          <label>Your Name</label>
+          <input type="text" id="contactName" required placeholder="Enter your name">
+
+          <label>Email Address</label>
+          <input type="email" id="contactEmail" required placeholder="Enter your email">
+
+          <label>Subject</label>
+          <input type="text" id="contactSubject" required placeholder="How can we help?">
+
+          <label>Message</label>
+          <textarea id="contactMessage" required placeholder="Write your message..."></textarea>
+
+          <button class="primary-btn full-btn" type="submit">
+            SEND MESSAGE →
+          </button>
+
+          <p class="form-note">
+            Demo form: messages are not sent to a real server.
+          </p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         ADMIN DASHBOARD
+    ================================== -->
+    <section class="page-view" id="page-admin" data-page="admin">
+
+      <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+
+          <div class="admin-brand">
+            <span class="brand-symbol">A</span>
+            <strong>AUREX ADMIN</strong>
+          </div>
+
+          <p class="admin-menu-label">DASHBOARD</p>
+
+          <button class="admin-nav active" data-admin-tab="overview">
+            ◫ Overview
+          </button>
+
+          <button class="admin-nav" data-admin-tab="products">
+            ◇ Products
+          </button>
+
+          <button class="admin-nav" data-admin-tab="orders">
+            ▤ Orders
+          </button>
+
+          <button class="admin-nav" data-admin-tab="customers">
+            ◉ Customers
+          </button>
+
+          <button class="admin-nav" data-admin-tab="inventory">
+            ▦ Inventory
+          </button>
+
+          <button class="admin-nav" data-admin-tab="settings">
+            ⚙ Settings
+          </button>
+
+          <button class="admin-exit" data-route="home">
+            ← Back to Store
+          </button>
+
+        </aside>
+
+
+        <div class="admin-main">
+
+          <div class="admin-header">
+
+            <div>
+              <p class="eyebrow">STORE MANAGEMENT</p>
+              <h1>Dashboard</h1>
+            </div>
+
+            <span class="admin-demo-label">FRONTEND DEMO</span>
+
+          </div>
+
+
+          <div class="admin-panel active" id="admin-overview">
+
+            <div class="admin-stats-grid">
+
+              <div class="admin-stat-card">
+                <span>TOTAL PRODUCTS</span>
+                <strong id="adminProductCount">0</strong>
+              </div>
+
+              <div class="admin-stat-card">
+                <span>TOTAL ORDERS</span>
+                <strong id="adminOrderCount">0</strong>
+              </div>
+
+              <div class="admin-stat-card">
+                <span>TOTAL CUSTOMERS</span>
+                <strong id="adminCustomerCount">0</strong>
+              </div>
+
+              <div class="admin-stat-card">
+                <span>DEMO REVENUE</span>
+                <strong id="adminRevenue">₹0</strong>
+              </div>
+
+            </div>
+
+            <div class="admin-content-card">
+              <h2>Recent Orders</h2>
+              <div id="adminRecentOrders"></div>
+            </div>
+
+          </div>
+
+
+          <div class="admin-panel" id="admin-products">
+
+            <div class="admin-section-heading">
+              <h2>Manage Products</h2>
+              <button class="primary-btn" id="adminAddProduct">
+                + ADD PRODUCT
+              </button>
+            </div>
+
+            <div id="adminProductList"></div>
+
+            <form id="adminProductForm" class="admin-form hidden">
+
+              <h3 id="adminProductFormTitle">Add Product</h3>
+
+              <input type="hidden" id="adminEditProductId">
+
+              <label>Product Name</label>
+              <input id="adminProductName" required>
+
+              <label>Category</label>
+              <select id="adminProductCategory">
+                <option>Shoes</option>
+                <option>Clothing</option>
+                <option>Watches</option>
+                <option>Accessories</option>
+                <option>Electronics</option>
+              </select>
+
+              <label>Price</label>
+              <input type="number" id="adminProductPrice" min="0" required>
+
+              <label>Original Price</label>
+              <input type="number" id="adminProductOldPrice" min="0">
+
+              <label>Stock</label>
+              <input type="number" id="adminProductStock" min="0" value="10">
+
+              <label>Image URL or Asset Path</label>
+              <input id="adminProductImage" placeholder="assets/images/product.jpg">
+
+              <label>Description</label>
+              <textarea id="adminProductDescription"></textarea>
+
+              <div class="admin-form-actions">
+                <button class="primary-btn" type="submit">SAVE PRODUCT</button>
+                <button class="outline-btn" type="button" id="adminCancelProduct">CANCEL</button>
+              </div>
+
+            </form>
+
+          </div>
+
+
+          <div class="admin-panel" id="admin-orders">
+
+            <h2>Manage Orders</h2>
+            <div id="adminOrderList"></div>
+
+          </div>
+
+
+          <div class="admin-panel" id="admin-customers">
+
+            <h2>Customer Information</h2>
+            <div id="adminCustomerList"></div>
+
+          </div>
+
+
+          <div class="admin-panel" id="admin-inventory">
+
+            <h2>Inventory Management</h2>
+            <div id="adminInventoryList"></div>
+
+          </div>
+
+
+          <div class="admin-panel" id="admin-settings">
+
+            <h2>Store Settings</h2>
+
+            <p>
+              AUREX frontend demonstration settings.
+              Real account security and server settings require a backend.
+            </p>
+
+            <button class="outline-btn" id="adminExportData">
+              EXPORT DEMO DATA
+            </button>
+
+            <button class="outline-btn" id="adminResetData">
+              RESET DEMO DATA
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ================================
+       GLOBAL FOOTER
+  ================================= -->
+  <footer class="main-footer" id="mainFooter">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+
+        <a href="#home" data-route="home" class="brand-logo">
+          <span class="brand-symbol">A</span>
+          <span class="brand-name">AUREX</span>
+        </a>
+
+        <p>
+          Future in Motion.<br>
+          A new perspective on digital shopping.
+        </p>
+
+      </div>
+
+      <div class="footer-column">
+        <h3>EXPLORE</h3>
+        <a href="#home" data-route="home">Home</a>
+        <a href="#shop" data-route="shop">Shop</a>
+        <a href="#mirror" data-route="mirror">Virtual Mirror</a>
+        <a href="#about" data-route="about">About</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>YOUR ACCOUNT</h3>
+        <a href="#profile" data-route="profile">Profile</a>
+        <a href="#orders" data-route="orders">My Orders</a>
+        <a href="#wishlist" data-route="wishlist">Wishlist</a>
+        <a href="#cart" data-route="cart">Shopping Cart</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>SUPPORT</h3>
+        <a href="#contact" data-route="contact">Contact Us</a>
+        <a href="#admin" data-route="admin">Admin Demo</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 AUREX. ALL RIGHTS RESERVED.</span>
+      <span>FUTURE IN MOTION.</span>
+    </div>
+
+  </footer>
+
+
+  <!-- ================================
+       MOBILE BOTTOM NAVIGATION
+  ================================= -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav">
+
+    <button data-route="home" class="bottom-nav-item active">
+      <span>⌂</span>
+      <small>Home</small>
+    </button>
+
+    <button data-route="shop" class="bottom-nav-item">
+      <span>▦</span>
+      <small>Shop</small>
+    </button>
+
+    <button data-route="mirror" class="bottom-nav-item">
+      <span>◇</span>
+      <small>Mirror</small>
+    </button>
+
+    <button data-route="wishlist" class="bottom-nav-item">
+      <span>♡</span>
+      <small>Wishlist</small>
+    </button>
+
+    <button data-route="cart" class="bottom-nav-item">
+      <span>🛒</span>
+      <small>Cart</small>
+    </button>
+
+  </nav>
+
+
+  <!-- ================================
+       GLOBAL TOAST
+  ================================= -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+
+  <!-- ================================
+       MODAL
+  ================================= -->
+  <div class="modal-backdrop hidden" id="globalModal">
+
+    <div class="modal-box">
+
+      <button class="close-btn" id="closeModal">✕</button>
+
+      <div id="modalContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================================
+       APP LOADING
+  ================================= -->
+  <div class="app-loading hidden" id="appLoading">
+    <div class="loading-spinner"></div>
+    <p>Preparing AUREX...</p>
+  </div>
+
+
+</body>
+</html>
